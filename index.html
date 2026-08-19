@@ -18,6 +18,52 @@
     <div class="bg-glow blob-1"></div>
     <div class="bg-glow blob-2"></div>
 
+    <div class="site-controls" aria-label="網站設定">
+        <button class="control-button" id="language-toggle" type="button" aria-label="切換英文" aria-pressed="false">
+            <i class="fa-solid fa-language"></i>
+            <span>EN</span>
+        </button>
+        <button class="control-button" id="theme-toggle" type="button" aria-label="切換淺色主題" aria-pressed="false">
+            <i class="fa-solid fa-sun"></i>
+            <span>淺色</span>
+        </button>
+    </div>
+
+    <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="開啟網站選單" aria-expanded="false" aria-controls="site-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <aside class="sidebar" id="site-sidebar" aria-label="網站導覽" data-i18n-aria-label="navLabel">
+        <div class="sidebar-brand">
+            <img src="avatar.jpg" alt="周以秉" class="sidebar-avatar">
+            <div>
+                <strong>周以秉</strong>
+                <span>PERSONAL SPACE</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="sidebar-link active" type="button" data-page="profile" aria-selected="true">
+                <i class="fa-solid fa-user"></i>
+                <span data-i18n="profileNav">個人介紹</span>
+            </button>
+            <button class="sidebar-link" type="button" data-page="skills" aria-selected="false">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span data-i18n="skillsNav">技能／專長</span>
+            </button>
+            <button class="sidebar-link" type="button" data-page="games" aria-selected="false">
+                <i class="fa-solid fa-gamepad"></i>
+                <span data-i18n="gamesNav">遊戲紀錄</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <span data-i18n="onlineStatus">ONLINE / EXPLORING</span>
+        </div>
+    </aside>
+
     <main class="card">
         <!-- 頂部橫幅封面 -->
         <div class="card-banner"></div>
@@ -30,26 +76,50 @@
             <p class="tagline"></p> <!-- JS 打字機動態寫入 -->
         </header>
 
-        <!-- 個人資訊區域 -->
-        <section class="info-grid">
+        <!-- 個人介紹分頁 -->
+        <section class="page-panel active" id="page-profile">
+            <div class="intro-copy">
+                <span class="section-kicker" data-i18n="aboutKicker">ABOUT ME</span>
+                <div class="intro-heading">
+                    <span class="intro-number">01</span>
+                    <div>
+                        <h2 data-i18n="profileTitle">嗨，我是周以秉</h2>
+                        <p data-i18n="profileDescription">目前就讀池上國中，平常喜歡打電動和吃生魚片。個性是正常人，正在慢慢探索自己喜歡的事物。</p>
+                    </div>
+                </div>
+                <div class="intro-tags">
+                    <span>GAMER</span>
+                    <span>VIOLINIST</span>
+                    <span>EXPLORER</span>
+                </div>
+            </div>
+
+            <div class="info-grid">
             <div class="info-card">
                 <div class="icon">🎂</div>
                 <div class="details">
-                    <span class="label">BIRTHDAY</span>
-                    <span class="value">2012 / 09 / 13</span>
+                    <span class="label" data-i18n="schoolLabel">SCHOOL</span>
+                    <span class="value">池上國中</span>
                 </div>
             </div>
 
             <div class="info-card">
                 <div class="icon">🎻</div>
                 <div class="details">
-                    <span class="label">TALENT</span>
+                    <span class="label" data-i18n="talentLabel">TALENT</span>
                     <span class="value">小提琴 (Violin)</span>
                 </div>
             </div>
 
-            <!-- IG 資訊卡片 -->
-            <a href="https://www.instagram.com/yabe.nchao" target="_blank" class="info-card instagram-card">
+            <div class="info-card">
+                <div class="icon">🍣</div>
+                <div class="details">
+                    <span class="label" data-i18n="interestsLabel">INTERESTS</span>
+                    <span class="value">打電動、吃生魚片</span>
+                </div>
+            </div>
+
+            <a href="https://www.instagram.com/yabe.nchao" target="_blank" rel="noreferrer" class="info-card instagram-card">
                 <div class="icon"><i class="fa-brands fa-instagram"></i></div>
                 <div class="details">
                     <span class="label">INSTAGRAM</span>
@@ -57,37 +127,78 @@
                 </div>
                 <div class="arrow">↗</div>
             </a>
+            <div class="info-card discord-card">
+                <div class="icon"><i class="fa-brands fa-discord"></i></div>
+                <div class="details">
+                    <span class="label">DISCORD</span>
+                    <span class="value">yabenchao</span>
+                </div>
+            </div>
+            </div>
+
+            <section class="action-section">
+                <button id="like-btn" class="like-button">
+                    <span data-i18n="likeButton">❤️ 給我一個讚</span> <span id="like-count">0</span>
+                </button>
+            </section>
         </section>
 
-        <!-- 遊戲興趣卡片展示 -->
-        <section class="games-section">
-            <h2>🎮 FAVORITE GAMES</h2>
-            <div class="game-cards">
-                <!-- 特戰英豪卡片 -->
-                <div class="game-card valorant">
-                    <img src="https://d1k8pxxip4mxx2.cloudfront.net/pub/media/bl/20200920-10068/large.jpg" alt="VALORANT 特戰英豪">
-                    <div class="game-overlay">
-                        <h3>特戰英豪</h3>
-                        <p>VALORANT</p>
-                    </div>
+        <!-- 技能與專長分頁 -->
+        <section class="page-panel" id="page-skills" hidden>
+            <div class="panel-heading">
+                <span class="section-kicker" data-i18n="skillsKicker">SKILLS &amp; TALENTS</span>
+                <h2 data-i18n="skillsTitle">我會做的事</h2>
+            </div>
+            <div class="skill-list">
+                <div class="skill-item editing-skill">
+                    <div class="skill-icon"><i class="fa-solid fa-film"></i></div>
+                    <div class="skill-content"><span data-i18n="editingSkill">剪輯</span><small data-i18n="editingDescription">影片與內容創作</small></div>
+                    <span class="skill-index">01</span>
                 </div>
-
-                <!-- 荒野亂鬥卡片 -->
-                <div class="game-card brawlstars">
-                    <img src="https://iamyourbig.com/wp-content/uploads/2021/10/Screenshot_20211012-094529.png" alt="Brawl Stars 荒野亂鬥">
-                    <div class="game-overlay">
-                        <h3>荒野亂鬥</h3>
-                        <p>Brawl Stars</p>
-                    </div>
+                <div class="skill-item violin-skill">
+                    <div class="skill-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="skill-content"><span data-i18n="violinSkill">小提琴</span><small data-i18n="violinDescription">音樂與演奏</small></div>
+                    <span class="skill-index">02</span>
+                </div>
+                <div class="skill-item sports-skill">
+                    <div class="skill-icon"><i class="fa-solid fa-person-running"></i></div>
+                    <div class="skill-content"><span data-i18n="sportsSkill">運動</span><small data-i18n="sportsDescription">保持活力與挑戰</small></div>
+                    <span class="skill-index">03</span>
+                </div>
+                <div class="skill-item debate-skill">
+                    <div class="skill-icon"><i class="fa-solid fa-comments"></i></div>
+                    <div class="skill-content"><span data-i18n="debateSkill">辯論</span><small data-i18n="debateDescription">表達觀點與交流</small></div>
+                    <span class="skill-index">04</span>
                 </div>
             </div>
         </section>
 
-        <!-- JS 互動按鈕 -->
-        <section class="action-section">
-            <button id="like-btn" class="like-button">
-                ❤️ 給我一個讚 <span id="like-count">0</span>
-            </button>
+        <!-- 遊戲紀錄分頁 -->
+        <section class="page-panel" id="page-games" hidden>
+            <div class="panel-heading">
+                <span class="section-kicker" data-i18n="gamesKicker">GAME LOG</span>
+                <h2 data-i18n="gamesTitle">遊戲紀錄</h2>
+            </div>
+            <div class="record-list">
+                <div class="record-card valorant-record">
+                    <img src="https://d1k8pxxip4mxx2.cloudfront.net/pub/media/bl/20200920-10068/large.jpg" alt="特戰英豪遊戲畫面" loading="lazy">
+                    <div class="record-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                    <div class="record-details">
+                        <strong>特戰英豪</strong>
+                        <span data-i18n="valorantRank">段位：金牌 2</span>
+                        <small data-i18n="valorantName">名稱：愛停在那場雨 我困在那個你#000</small>
+                    </div>
+                </div>
+                <div class="record-card brawl-record">
+                    <img src="https://iamyourbig.com/wp-content/uploads/2021/10/Screenshot_20211012-094529.png" alt="荒野亂鬥遊戲畫面" loading="lazy">
+                    <div class="record-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="record-details">
+                        <strong>荒野亂鬥</strong>
+                        <span data-i18n="brawlRank">段位：鑽石 1</span>
+                        <small data-i18n="brawlId">ID：Imissherbecause</small>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <footer>
@@ -96,10 +207,12 @@
                     <i class="fa-brands fa-instagram"></i>
                 </a>
             </div>
-            <p>Designed by 周以秉 • HTML, CSS & JS</p>
+            <p data-i18n="footerText">Designed by 周以秉 • HTML, CSS & JS</p>
         </footer>
     </main>
 
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
     <!-- 載入你的 JS 檔案：1.JS -->
     <script src="script.js"></script>
 </body>
