@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>周以秉 | 個人主頁</title>
+    <!-- 引入科技感字體與 FontAwesome 圖示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入你的 CSS 檔案：1.CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 背景發光特效 -->
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <main class="card">
+        <!-- 頂部橫幅封面 -->
+        <div class="card-banner"></div>
+
+        <header class="profile-header">
+            <div class="avatar-container">
+                <img src="avatar.jpg" alt="周以秉" class="avatar-img">
+            </div>
+            <h1>周以秉</h1>
+            <p class="tagline"></p> <!-- JS 打字機動態寫入 -->
+        </header>
+
+        <!-- 個人資訊區域 -->
+        <section class="info-grid">
+            <div class="info-card">
+                <div class="icon">🎂</div>
+                <div class="details">
+                    <span class="label">BIRTHDAY</span>
+                    <span class="value">2012 / 09 / 13</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">🎻</div>
+                <div class="details">
+                    <span class="label">TALENT</span>
+                    <span class="value">小提琴 (Violin)</span>
+                </div>
+            </div>
+
+            <!-- IG 資訊卡片 -->
+            <a href="https://www.instagram.com/yabe.nchao" target="_blank" class="info-card instagram-card">
+                <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+                <div class="details">
+                    <span class="label">INSTAGRAM</span>
+                    <span class="value">Zhou Yib Ing (@yabe.nchao)</span>
+                </div>
+                <div class="arrow">↗</div>
+            </a>
+        </section>
+
+        <!-- 遊戲興趣卡片展示 -->
+        <section class="games-section">
+            <h2>🎮 FAVORITE GAMES</h2>
+            <div class="game-cards">
+                <!-- 特戰英豪卡片 -->
+                <div class="game-card valorant">
+                    <img src="https://d1k8pxxip4mxx2.cloudfront.net/pub/media/bl/20200920-10068/large.jpg" alt="VALORANT 特戰英豪">
+                    <div class="game-overlay">
+                        <h3>特戰英豪</h3>
+                        <p>VALORANT</p>
+                    </div>
+                </div>
+
+                <!-- 荒野亂鬥卡片 -->
+                <div class="game-card brawlstars">
+                    <img src="https://iamyourbig.com/wp-content/uploads/2021/10/Screenshot_20211012-094529.png" alt="Brawl Stars 荒野亂鬥">
+                    <div class="game-overlay">
+                        <h3>荒野亂鬥</h3>
+                        <p>Brawl Stars</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JS 互動按鈕 -->
+        <section class="action-section">
+            <button id="like-btn" class="like-button">
+                ❤️ 給我一個讚 <span id="like-count">0</span>
+            </button>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://www.instagram.com/yabe.nchao" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <p>Designed by 周以秉 • HTML, CSS & JS</p>
+        </footer>
+    </main>
+
+    <!-- 載入你的 JS 檔案：1.JS -->
+    <script src="script.js"></script>
+</body>
+</html>
