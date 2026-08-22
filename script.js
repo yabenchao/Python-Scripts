@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             schoolLabel: 'SCHOOL',
             talentLabel: 'TALENT',
             interestsLabel: 'INTERESTS',
+            birthdayLabel: 'BIRTHDAY',
             likeButton: '❤️ 給我一個讚',
             skillsTitle: '我會做的事',
             editingSkill: '剪輯',
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             schoolLabel: 'SCHOOL',
             talentLabel: 'TALENT',
             interestsLabel: 'INTERESTS',
+            birthdayLabel: 'BIRTHDAY',
             likeButton: '❤️ Like this page',
             skillsTitle: 'Things I Do',
             editingSkill: 'Video Editing',
@@ -240,6 +242,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     }
+
+    // 點擊卡片即可複製 Discord、特戰或荒野名稱
+    const copyCards = document.querySelectorAll('.copy-card');
+
+    async function copyCardValue(card) {
+        const value = card.dataset.copyValue;
+        const hint = card.querySelector('.copy-hint');
+
+        try {
+            await navigator.clipboard.writeText(value);
+        } catch {
+            const fallbackInput = document.createElement('textarea');
+            fallbackInput.value = value;
+            fallbackInput.setAttribute('readonly', '');
+            fallbackInput.style.position = 'fixed';
+            fallbackInput.style.opacity = '0';
+            document.body.appendChild(fallbackInput);
+            fallbackInput.select();
+            document.execCommand('copy');
+            fallbackInput.remove();
+        }
+
+        card.classList.add('is-copied');
+        if (hint) hint.textContent = '已複製！';
+        setTimeout(() => {
+            card.classList.remove('is-copied');
+            if (hint) hint.textContent = '點擊複製';
+        }, 1400);
+    }
+
+    copyCards.forEach((card) => {
+        card.addEventListener('click', () => copyCardValue(card));
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                copyCardValue(card);
+            }
+        });
+    });
 
     // ----------------------------------------------------
     // 3. 3D 卡片傾斜特效 (3D Tilt Effect)

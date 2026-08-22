@@ -438,6 +438,28 @@ h1 {
     transition: transform 0.2s, background 0.2s;
 }
 
+.copy-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.copy-card:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+}
+
+.copy-hint {
+    margin-left: auto;
+    color: var(--text-secondary);
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.copy-card.is-copied .copy-hint {
+    color: #42e695;
+}
+
 .info-card:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.06);
@@ -656,6 +678,13 @@ h1 {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.04);
+}
+
+.record-card .copy-hint {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    flex: 0 0 auto;
 }
 
 .record-card::before {
