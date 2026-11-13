@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             debateSkill: '辯論',
             debateDescription: '表達觀點與交流',
             gamesTitle: '遊戲紀錄',
-            valorantRank: '段位：金牌 2',
+            valorantRank: '段位：金牌 3',
             valorantName: '名稱：愛停在那場雨 我困在那個你#000',
-            brawlRank: '段位：鑽石 1',
+            brawlRank: '段位：鑽石 3',
             brawlId: 'ID：Imissherbecause',
             footerText: 'Designed by 周以秉 • HTML, CSS & JS'
         },
@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             debateSkill: 'Debate',
             debateDescription: 'Ideas and communication',
             gamesTitle: 'Game Log',
-            valorantRank: 'Rank: Gold 2',
+            valorantRank: 'Rank: Gold 3',
             valorantName: 'Name: 愛停在那場雨 我困在那個你#000',
-            brawlRank: 'Rank: Diamond 1',
+            brawlRank: 'Rank: Diamond 3',
             brawlId: 'ID: Imissherbecause',
             footerText: 'Designed by Zhou Yibing • HTML, CSS & JS'
         }
