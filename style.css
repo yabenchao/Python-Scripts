@@ -595,6 +595,10 @@ h1 {
     line-height: 1.4;
 }
 
+.sports-skill .skill-content small {
+    white-space: pre-line;
+}
+
 .skill-index {
     position: absolute;
     top: 10px;
